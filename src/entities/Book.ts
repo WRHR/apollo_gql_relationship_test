@@ -25,4 +25,9 @@ export class Book extends BaseEntity {
 
   @ManyToOne(() => Author, (author) => author.books)
   author: Author;
+
+  @Field(() => Author)
+  authorInfo() {
+    return Author.findOne({ id: this.authorId });
+  }
 }

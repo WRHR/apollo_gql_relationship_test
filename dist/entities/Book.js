@@ -14,6 +14,9 @@ const typeorm_1 = require("typeorm");
 const type_graphql_1 = require("type-graphql");
 const Author_1 = require("./Author");
 let Book = class Book extends typeorm_1.BaseEntity {
+    authorInfo() {
+        return Author_1.Author.findOne({ id: this.authorId });
+    }
 };
 __decorate([
     type_graphql_1.Field(),
@@ -34,6 +37,12 @@ __decorate([
     typeorm_1.ManyToOne(() => Author_1.Author, (author) => author.books),
     __metadata("design:type", Author_1.Author)
 ], Book.prototype, "author", void 0);
+__decorate([
+    type_graphql_1.Field(() => Author_1.Author),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], Book.prototype, "authorInfo", null);
 Book = __decorate([
     type_graphql_1.ObjectType(),
     typeorm_1.Entity()
