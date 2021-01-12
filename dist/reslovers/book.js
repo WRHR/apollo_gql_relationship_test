@@ -44,6 +44,11 @@ let BookResolver = class BookResolver {
             return yield Book_1.Book.find();
         });
     }
+    book(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield Book_1.Book.findOne({ id: id });
+        });
+    }
     createBook(input) {
         return __awaiter(this, void 0, void 0, function* () {
             let findAuthor = yield Author_1.Author.findOne(input.authorId);
@@ -61,6 +66,13 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], BookResolver.prototype, "books", null);
+__decorate([
+    type_graphql_1.Query(() => Book_1.Book),
+    __param(0, type_graphql_1.Arg("id")),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], BookResolver.prototype, "book", null);
 __decorate([
     type_graphql_1.Mutation(() => Book_1.Book),
     __param(0, type_graphql_1.Arg("input")),

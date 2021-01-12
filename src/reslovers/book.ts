@@ -18,6 +18,11 @@ export class BookResolver {
     return await Book.find();
   }
 
+  @Query(() => Book)
+  async book(@Arg("id") id: number) {
+    return await Book.findOne({ id: id });
+  }
+
   @Mutation(() => Book)
   async createBook(@Arg("input") input: BookInput): Promise<Book> {
     let findAuthor = await Author.findOne(input.authorId);
