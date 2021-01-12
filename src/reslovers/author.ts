@@ -16,12 +16,36 @@ export class AuthorResolver {
   async authors(): Promise<Author[]> {
     return await Author.find();
   }
-  @Mutation(()=>Author)
+
+  @Mutation(() => Author)
   async createAuthor(
     @Arg("input") input: AuthorInput
   ): Promise<Author | undefined> {
     return Author.create({
       ...input,
     }).save();
+  }
+
+  @Mutation(() => Author)
+  async updateAuthor(
+    @Arg("input") input: AuthorInput,
+    @Arg("id") id: number
+  ): Promise<Author | undefined> {
+    let author = await Author.findOne(id);
+    if (!author) {
+      return undefined;
+    }
+
+    if (typeof input !== "undefined") {
+      Author.update({ id }, { ...input });
+      author = await Author.findOne(id);
+    }
+    return author;
+  }
+
+  @Mutation(() => Boolean)
+  async deleteAuthor(@Arg("id") id: number): Promise<boolean> {
+    await Author.delete(id);
+    return true;
   }
 }

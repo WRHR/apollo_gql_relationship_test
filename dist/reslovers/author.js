@@ -48,6 +48,25 @@ let AuthorResolver = class AuthorResolver {
             return Author_1.Author.create(Object.assign({}, input)).save();
         });
     }
+    updateAuthor(input, id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let author = yield Author_1.Author.findOne(id);
+            if (!author) {
+                return undefined;
+            }
+            if (typeof input !== "undefined") {
+                Author_1.Author.update({ id }, Object.assign({}, input));
+                author = yield Author_1.Author.findOne(id);
+            }
+            return author;
+        });
+    }
+    deleteAuthor(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield Author_1.Author.delete(id);
+            return true;
+        });
+    }
 };
 __decorate([
     type_graphql_1.Query(() => [Author_1.Author]),
@@ -62,6 +81,21 @@ __decorate([
     __metadata("design:paramtypes", [AuthorInput]),
     __metadata("design:returntype", Promise)
 ], AuthorResolver.prototype, "createAuthor", null);
+__decorate([
+    type_graphql_1.Mutation(() => Author_1.Author),
+    __param(0, type_graphql_1.Arg("input")),
+    __param(1, type_graphql_1.Arg("id")),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [AuthorInput, Number]),
+    __metadata("design:returntype", Promise)
+], AuthorResolver.prototype, "updateAuthor", null);
+__decorate([
+    type_graphql_1.Mutation(() => Boolean),
+    __param(0, type_graphql_1.Arg("id")),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], AuthorResolver.prototype, "deleteAuthor", null);
 AuthorResolver = __decorate([
     type_graphql_1.Resolver()
 ], AuthorResolver);
