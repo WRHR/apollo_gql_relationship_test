@@ -1,5 +1,6 @@
 import { Book } from "../entities/Book";
 import { Arg, Field, InputType, Mutation, Query, Resolver } from "type-graphql";
+import { Author } from "../entities/Author";
 
 @InputType()
 class BookInput {
@@ -19,8 +20,10 @@ export class BookResolver {
 
   @Mutation(()=>Book)
   async createBook(@Arg('input') input:BookInput): Promise<Book>{
+    let author = await Author.findOne(input.authorId)
     return Book.create({
-      ...input
-    }).save()
+      title:input.title
+
+    })
   }
 }

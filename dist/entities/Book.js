@@ -26,11 +26,6 @@ __decorate([
     __metadata("design:type", String)
 ], Book.prototype, "title", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column(),
-    __metadata("design:type", Number)
-], Book.prototype, "authorId", void 0);
-__decorate([
     typeorm_1.ManyToOne(() => Author_1.Author, (author) => author.books),
     __metadata("design:type", Author_1.Author)
 ], Book.prototype, "author", void 0);

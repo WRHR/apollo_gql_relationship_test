@@ -24,6 +24,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.BookResolver = void 0;
 const Book_1 = require("../entities/Book");
 const type_graphql_1 = require("type-graphql");
+const Author_1 = require("../entities/Author");
 let BookInput = class BookInput {
 };
 __decorate([
@@ -45,7 +46,10 @@ let BookResolver = class BookResolver {
     }
     createBook(input) {
         return __awaiter(this, void 0, void 0, function* () {
-            return Book_1.Book.create(Object.assign({}, input)).save();
+            let author = yield Author_1.Author.findOne(input.authorId);
+            return Book_1.Book.create({
+                title: input.title
+            });
         });
     }
 };

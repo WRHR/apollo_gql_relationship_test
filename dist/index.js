@@ -21,18 +21,20 @@ const hello_1 = require("./reslovers/hello");
 const User_1 = require("./entities/User");
 const Author_1 = require("./entities/Author");
 const author_1 = require("./reslovers/author");
+const Book_1 = require("./entities/Book");
+const book_1 = require("./reslovers/book");
 const main = () => __awaiter(void 0, void 0, void 0, function* () {
     yield typeorm_1.createConnection({
         type: "postgres",
         database: "apolloRelTest",
         logging: true,
         synchronize: true,
-        entities: [User_1.User, Author_1.Author],
+        entities: [User_1.User, Author_1.Author, Book_1.Book],
     });
     const app = express_1.default();
     const apolloServer = new apollo_server_express_1.ApolloServer({
         schema: yield type_graphql_1.buildSchema({
-            resolvers: [hello_1.HelloResolver, author_1.AuthorResolver],
+            resolvers: [hello_1.HelloResolver, author_1.AuthorResolver, book_1.BookResolver],
             validate: false,
         }),
         context: ({ req, res }) => ({ req, res }),

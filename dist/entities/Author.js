@@ -31,9 +31,8 @@ __decorate([
     __metadata("design:type", String)
 ], Author.prototype, "hometown", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.OneToMany(() => Book_1.Book, book => book.author),
-    __metadata("design:type", Book_1.Book)
+    typeorm_1.OneToMany(() => Book_1.Book, (book) => book.author),
+    __metadata("design:type", Array)
 ], Author.prototype, "books", void 0);
 Author = __decorate([
     type_graphql_1.ObjectType(),
