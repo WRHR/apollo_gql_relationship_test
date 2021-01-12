@@ -1,26 +1,27 @@
-import {Resolver, Query, Mutation, Arg, InputType, Field} from 'type-graphql'
-import {Author} from '../entities/Author'
+import { Resolver, Query, Mutation, Arg, InputType, Field } from "type-graphql";
+import { Author } from "../entities/Author";
 
 @InputType()
-class AuthorInput{
+class AuthorInput {
   @Field()
-  name: string
+  name: string;
 
   @Field()
-  hometown:string
+  hometown: string;
 }
 
 @Resolver()
 export class AuthorResolver {
-  @Query(()=>[Author])
-  async authors():Promise<Author[]> {
-    return await Author.find()
+  @Query(() => [Author])
+  async authors(): Promise<Author[]> {
+    return await Author.find();
   }
-  @Mutation()
-  async createAuthor(@Arg('input') input: AuthorInput){
-
+  @Mutation(()=>Author)
+  async createAuthor(
+    @Arg("input") input: AuthorInput
+  ): Promise<Author | undefined> {
     return Author.create({
-      ...input
-    }).save()
+      ...input,
+    }).save();
   }
 }

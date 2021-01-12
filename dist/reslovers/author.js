@@ -56,8 +56,8 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], AuthorResolver.prototype, "authors", null);
 __decorate([
-    type_graphql_1.Mutation(),
-    __param(0, type_graphql_1.Arg('input')),
+    type_graphql_1.Mutation(() => Author_1.Author),
+    __param(0, type_graphql_1.Arg("input")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [AuthorInput]),
     __metadata("design:returntype", Promise)
