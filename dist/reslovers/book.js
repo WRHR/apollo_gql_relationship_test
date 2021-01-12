@@ -46,10 +46,12 @@ let BookResolver = class BookResolver {
     }
     createBook(input) {
         return __awaiter(this, void 0, void 0, function* () {
-            let author = yield Author_1.Author.findOne(input.authorId);
-            return Book_1.Book.create({
-                title: input.title
-            });
+            let findAuthor = yield Author_1.Author.findOne(input.authorId);
+            let book = Book_1.Book.create({
+                title: input.title,
+                author: findAuthor,
+            }).save();
+            return book;
         });
     }
 };
@@ -61,7 +63,7 @@ __decorate([
 ], BookResolver.prototype, "books", null);
 __decorate([
     type_graphql_1.Mutation(() => Book_1.Book),
-    __param(0, type_graphql_1.Arg('input')),
+    __param(0, type_graphql_1.Arg("input")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [BookInput]),
     __metadata("design:returntype", Promise)

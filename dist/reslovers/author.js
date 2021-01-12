@@ -43,6 +43,11 @@ let AuthorResolver = class AuthorResolver {
             return yield Author_1.Author.find();
         });
     }
+    findAtuhor(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield Author_1.Author.findOne(id);
+        });
+    }
     createAuthor(input) {
         return __awaiter(this, void 0, void 0, function* () {
             return Author_1.Author.create(Object.assign({}, input)).save();
@@ -74,6 +79,13 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], AuthorResolver.prototype, "authors", null);
+__decorate([
+    type_graphql_1.Query(() => Author_1.Author),
+    __param(0, type_graphql_1.Arg('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], AuthorResolver.prototype, "findAtuhor", null);
 __decorate([
     type_graphql_1.Mutation(() => Author_1.Author),
     __param(0, type_graphql_1.Arg("input")),

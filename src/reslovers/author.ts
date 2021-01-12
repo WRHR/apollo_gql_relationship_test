@@ -17,6 +17,11 @@ export class AuthorResolver {
     return await Author.find();
   }
 
+  @Query(()=>Author)
+  async findAtuhor(@Arg('id') id:number):Promise<Author | undefined>{
+    return await Author.findOne(id)
+  }
+
   @Mutation(() => Author)
   async createAuthor(
     @Arg("input") input: AuthorInput

@@ -5,6 +5,7 @@ import {
   Entity,
   OneToMany,
   PrimaryGeneratedColumn,
+  
 } from "typeorm";
 import { Book } from "./Book";
 
@@ -25,4 +26,9 @@ export class Author extends BaseEntity {
 
   @OneToMany(() => Book, (book) => book.author)
   books: Book[];
+
+  @Field(()=>[Book], {nullable:true})
+  allbooks(){
+    return Book.find({authorId:this.id})
+  }
 }
