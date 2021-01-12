@@ -1,16 +1,28 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
-import { Field, ObjectType } from 'type-graphql'
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from "typeorm";
+import { Field, ObjectType } from "type-graphql";
+import { Author } from "./Author";
 
 @ObjectType()
 @Entity()
-export class Book extends BaseEntity{
+export class Book extends BaseEntity {
   @Field()
   @PrimaryGeneratedColumn()
-  id!: number
+  id!: number;
 
   @Field()
   @Column()
-  title!:string
+  title!: string;
 
+  @Field()
+  @Column()
+  authorId: number;
 
+  @ManyToOne(() => Author, (author) => author.books)
+  author: Author;
 }

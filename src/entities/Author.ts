@@ -1,5 +1,6 @@
 import { Field, ObjectType } from "type-graphql";
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Book } from "./Book";
 
 @ObjectType()
 @Entity()
@@ -15,4 +16,8 @@ export class Author extends BaseEntity {
   @Field()
   @Column()
   hometown: string;
+
+  @Field()
+  @OneToMany(()=>Book, book => book.author)
+  books:Book
 }
