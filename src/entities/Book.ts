@@ -34,7 +34,7 @@ export class Book extends BaseEntity {
     return Author.findOne({ id: this.authorId });
   }
 
-  @ManyToMany(()=>Category)
-  @JoinTable()
-  categories: Category[]
+  @ManyToMany(() => Category)
+  @JoinTable({ name: "genre" })
+  categories: Category[];
 }

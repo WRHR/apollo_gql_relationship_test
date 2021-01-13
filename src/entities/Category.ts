@@ -10,5 +10,5 @@ export class Category extends BaseEntity {
 
   @Field()
   @Column()
-  genre: string;
+  name: string;
 }

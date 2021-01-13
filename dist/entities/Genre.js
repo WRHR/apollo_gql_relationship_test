@@ -9,22 +9,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Category = void 0;
-const type_graphql_1 = require("type-graphql");
+exports.Genre = void 0;
 const typeorm_1 = require("typeorm");
-type_graphql_1.ObjectType();
-typeorm_1.Entity();
-class Category extends typeorm_1.BaseEntity {
-}
+const Category_1 = require("./Category");
+const Book_1 = require("./Book");
+let Genre = class Genre {
+};
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.PrimaryGeneratedColumn(),
+    typeorm_1.PrimaryColumn("int"),
     __metadata("design:type", Number)
-], Category.prototype, "id", void 0);
+], Genre.prototype, "bookId", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column(),
-    __metadata("design:type", String)
-], Category.prototype, "name", void 0);
-exports.Category = Category;
-//# sourceMappingURL=Category.js.map
+    typeorm_1.PrimaryColumn("int"),
+    __metadata("design:type", Number)
+], Genre.prototype, "categoryId", void 0);
+__decorate([
+    typeorm_1.OneToOne(() => Book_1.Book),
+    typeorm_1.JoinColumn(),
+    __metadata("design:type", Book_1.Book)
+], Genre.prototype, "book", void 0);
+__decorate([
+    typeorm_1.OneToOne(() => Category_1.Category),
+    typeorm_1.JoinColumn(),
+    __metadata("design:type", Category_1.Category)
+], Genre.prototype, "category", void 0);
+Genre = __decorate([
+    typeorm_1.Entity()
+], Genre);
+exports.Genre = Genre;
+//# sourceMappingURL=Genre.js.map

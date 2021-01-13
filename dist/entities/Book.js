@@ -46,7 +46,7 @@ __decorate([
 ], Book.prototype, "authorInfo", null);
 __decorate([
     typeorm_1.ManyToMany(() => Category_1.Category),
-    typeorm_1.JoinTable(),
+    typeorm_1.JoinTable({ name: "genre" }),
     __metadata("design:type", Array)
 ], Book.prototype, "categories", void 0);
 Book = __decorate([
