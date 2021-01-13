@@ -4,14 +4,14 @@ import { ApolloServer } from "apollo-server-express";
 import { buildSchema } from "type-graphql";
 import { createConnection } from "typeorm";
 import { MyContext } from "./types";
-import { HelloResolver } from "./reslovers/hello";
+import { HelloResolver } from "./resolvers/hello";
 import { User } from "./entities/User";
 import { Author } from "./entities/Author";
-import { AuthorResolver } from "./reslovers/author";
+import { AuthorResolver } from "./resolvers/author";
 import { Book } from "./entities/Book";
-import { BookResolver } from "./reslovers/book";
+import { BookResolver } from "./resolvers/book";
 import { Category } from "./entities/Category";
-import { CategoryResolver } from "./reslovers/category";
+import { CategoryResolver } from "./resolvers/category";
 import { Genre } from "./entities/Genre";
 
 const main = async () => {

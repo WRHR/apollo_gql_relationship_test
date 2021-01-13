@@ -17,14 +17,14 @@ const express_1 = __importDefault(require("express"));
 const apollo_server_express_1 = require("apollo-server-express");
 const type_graphql_1 = require("type-graphql");
 const typeorm_1 = require("typeorm");
-const hello_1 = require("./reslovers/hello");
+const hello_1 = require("./resolvers/hello");
 const User_1 = require("./entities/User");
 const Author_1 = require("./entities/Author");
-const author_1 = require("./reslovers/author");
+const author_1 = require("./resolvers/author");
 const Book_1 = require("./entities/Book");
-const book_1 = require("./reslovers/book");
+const book_1 = require("./resolvers/book");
 const Category_1 = require("./entities/Category");
-const category_1 = require("./reslovers/category");
+const category_1 = require("./resolvers/category");
 const Genre_1 = require("./entities/Genre");
 const main = () => __awaiter(void 0, void 0, void 0, function* () {
     yield typeorm_1.createConnection({
