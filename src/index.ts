@@ -10,6 +10,8 @@ import { Author } from "./entities/Author";
 import { AuthorResolver } from "./reslovers/author";
 import { Book } from "./entities/Book";
 import { BookResolver } from "./reslovers/book";
+import { Category } from "./entities/Category";
+import { CategoryResolver } from "./reslovers/category";
 
 const main = async () => {
   await createConnection({
@@ -17,14 +19,14 @@ const main = async () => {
     database: "apolloRelTest",
     logging: true,
     synchronize: true,
-    entities: [User, Author, Book],
+    entities: [User, Author, Book, Category],
   });
 
   const app = express();
 
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [HelloResolver, AuthorResolver, BookResolver],
+      resolvers: [HelloResolver, AuthorResolver, BookResolver, CategoryResolver],
       validate: false,
     }),
     context: ({ req, res }): MyContext => ({ req, res }),
