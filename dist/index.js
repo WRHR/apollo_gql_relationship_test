@@ -32,7 +32,7 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
         database: "apolloRelTest",
         logging: true,
         synchronize: true,
-        entities: [User_1.User, Author_1.Author, Book_1.Book, Category_1.Category, Genre_1.Genre],
+        entities: [User_1.User, Author_1.Author, Category_1.Category, Book_1.Book, Genre_1.Genre],
     });
     const app = express_1.default();
     const apolloServer = new apollo_server_express_1.ApolloServer({

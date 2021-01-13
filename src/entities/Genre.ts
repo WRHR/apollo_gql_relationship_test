@@ -7,7 +7,7 @@ export class Genre {
   @PrimaryColumn("int")
   bookId: number;
 
-  @PrimaryColumn("int")
+  @PrimaryColumn('int')
   categoryId: number;
 
   @OneToOne(() => Book)

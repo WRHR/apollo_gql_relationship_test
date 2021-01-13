@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Category = void 0;
 const type_graphql_1 = require("type-graphql");
 const typeorm_1 = require("typeorm");
+const Book_1 = require("./Book");
 type_graphql_1.ObjectType();
 typeorm_1.Entity();
 class Category extends typeorm_1.BaseEntity {
@@ -26,5 +27,10 @@ __decorate([
     typeorm_1.Column(),
     __metadata("design:type", String)
 ], Category.prototype, "name", void 0);
+__decorate([
+    typeorm_1.ManyToMany(() => Book_1.Book, (book) => book.categories),
+    typeorm_1.JoinTable({ name: "genre" }),
+    __metadata("design:type", Array)
+], Category.prototype, "books", void 0);
 exports.Category = Category;
 //# sourceMappingURL=Category.js.map

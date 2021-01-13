@@ -20,7 +20,7 @@ __decorate([
     __metadata("design:type", Number)
 ], Genre.prototype, "bookId", void 0);
 __decorate([
-    typeorm_1.PrimaryColumn("int"),
+    typeorm_1.PrimaryColumn('int'),
     __metadata("design:type", Number)
 ], Genre.prototype, "categoryId", void 0);
 __decorate([

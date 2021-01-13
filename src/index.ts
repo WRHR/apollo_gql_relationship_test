@@ -20,7 +20,7 @@ const main = async () => {
     database: "apolloRelTest",
     logging: true,
     synchronize: true,
-    entities: [User, Author, Book, Category, Genre],
+    entities: [User, Author, Category, Book, Genre],
   });
 
   const app = express();
