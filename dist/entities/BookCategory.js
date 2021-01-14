@@ -9,32 +9,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Genre = void 0;
+exports.BookCategory = void 0;
+const type_graphql_1 = require("type-graphql");
 const typeorm_1 = require("typeorm");
-const Category_1 = require("./Category");
 const Book_1 = require("./Book");
-let Genre = class Genre {
+const Category_1 = require("./Category");
+let BookCategory = class BookCategory {
 };
 __decorate([
-    typeorm_1.PrimaryColumn("int"),
+    typeorm_1.PrimaryColumn(),
     __metadata("design:type", Number)
-], Genre.prototype, "bookId", void 0);
+], BookCategory.prototype, "bookId", void 0);
 __decorate([
-    typeorm_1.PrimaryColumn('int'),
+    typeorm_1.PrimaryColumn(),
     __metadata("design:type", Number)
-], Genre.prototype, "categoryId", void 0);
+], BookCategory.prototype, "categoryId", void 0);
 __decorate([
-    typeorm_1.OneToOne(() => Book_1.Book),
-    typeorm_1.JoinColumn(),
+    typeorm_1.ManyToOne(() => Book_1.Book, (book) => book.categoryConnection, { primary: true }),
+    typeorm_1.JoinColumn({ name: "bookId" }),
     __metadata("design:type", Book_1.Book)
-], Genre.prototype, "book", void 0);
+], BookCategory.prototype, "book", void 0);
 __decorate([
-    typeorm_1.OneToOne(() => Category_1.Category),
-    typeorm_1.JoinColumn(),
+    typeorm_1.ManyToOne(() => Category_1.Category, (category) => category.bookConnection, { primary: true }),
+    typeorm_1.JoinColumn({ name: "categoryId" }),
     __metadata("design:type", Category_1.Category)
-], Genre.prototype, "category", void 0);
-Genre = __decorate([
+], BookCategory.prototype, "category", void 0);
+BookCategory = __decorate([
+    type_graphql_1.ObjectType(),
     typeorm_1.Entity()
-], Genre);
-exports.Genre = Genre;
-//# sourceMappingURL=Genre.js.map
+], BookCategory);
+exports.BookCategory = BookCategory;
+//# sourceMappingURL=BookCategory.js.map

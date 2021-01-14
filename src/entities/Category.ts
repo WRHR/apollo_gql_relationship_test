@@ -1,26 +1,24 @@
-import { Field, ObjectType } from "type-graphql";
 import {
   BaseEntity,
   Column,
   Entity,
-  JoinTable,
-  ManyToMany,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { Book } from "./Book";
+import { Field, ObjectType } from "type-graphql";
+import { BookCategory } from "./BookCategory";
 
-ObjectType();
-Entity();
+@ObjectType()
+@Entity()
 export class Category extends BaseEntity {
   @Field()
   @PrimaryGeneratedColumn()
-  id: number;
+  id!: number;
 
   @Field()
   @Column()
   name: string;
 
-  @ManyToMany(() => Book, (book) => book.categories)
-  @JoinTable({ name: "genre" })
-  books: Book[];
+  @OneToMany(() => BookCategory, (bc) => bc.category)
+  bookConnection: BookCategory[];
 }

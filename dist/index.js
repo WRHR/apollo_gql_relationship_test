@@ -24,15 +24,14 @@ const author_1 = require("./resolvers/author");
 const Book_1 = require("./entities/Book");
 const book_1 = require("./resolvers/book");
 const Category_1 = require("./entities/Category");
-const category_1 = require("./resolvers/category");
-const Genre_1 = require("./entities/Genre");
+const BookCategory_1 = require("./entities/BookCategory");
 const main = () => __awaiter(void 0, void 0, void 0, function* () {
     yield typeorm_1.createConnection({
         type: "postgres",
         database: "apolloRelTest",
         logging: true,
         synchronize: true,
-        entities: [User_1.User, Author_1.Author, Category_1.Category, Book_1.Book, Genre_1.Genre],
+        entities: [User_1.User, Author_1.Author, Book_1.Book, Category_1.Category, BookCategory_1.BookCategory],
     });
     const app = express_1.default();
     const apolloServer = new apollo_server_express_1.ApolloServer({
@@ -41,7 +40,6 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
                 hello_1.HelloResolver,
                 author_1.AuthorResolver,
                 book_1.BookResolver,
-                category_1.CategoryResolver,
             ],
             validate: false,
         }),

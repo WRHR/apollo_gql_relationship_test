@@ -11,8 +11,8 @@ import { AuthorResolver } from "./resolvers/author";
 import { Book } from "./entities/Book";
 import { BookResolver } from "./resolvers/book";
 import { Category } from "./entities/Category";
-import { CategoryResolver } from "./resolvers/category";
-import { Genre } from "./entities/Genre";
+// import { CategoryResolver } from "./resolvers/category";
+import { BookCategory } from "./entities/BookCategory";
 
 const main = async () => {
   await createConnection({
@@ -20,7 +20,7 @@ const main = async () => {
     database: "apolloRelTest",
     logging: true,
     synchronize: true,
-    entities: [User, Author, Category, Book, Genre],
+    entities: [User, Author, Book, Category, BookCategory],
   });
 
   const app = express();
@@ -31,7 +31,7 @@ const main = async () => {
         HelloResolver,
         AuthorResolver,
         BookResolver,
-        CategoryResolver,
+        // CategoryResolver,
       ],
       validate: false,
     }),

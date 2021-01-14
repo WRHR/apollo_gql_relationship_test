@@ -13,7 +13,7 @@ exports.Book = void 0;
 const typeorm_1 = require("typeorm");
 const type_graphql_1 = require("type-graphql");
 const Author_1 = require("./Author");
-const Category_1 = require("./Category");
+const BookCategory_1 = require("./BookCategory");
 let Book = class Book extends typeorm_1.BaseEntity {
     authorInfo() {
         return Author_1.Author.findOne({ id: this.authorId });
@@ -45,10 +45,9 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], Book.prototype, "authorInfo", null);
 __decorate([
-    typeorm_1.ManyToMany(() => Category_1.Category, category => category.books),
-    typeorm_1.JoinTable({ name: "genre" }),
+    typeorm_1.OneToMany(() => BookCategory_1.BookCategory, (bc) => bc.book),
     __metadata("design:type", Array)
-], Book.prototype, "categories", void 0);
+], Book.prototype, "categoryConnection", void 0);
 Book = __decorate([
     type_graphql_1.ObjectType(),
     typeorm_1.Entity()

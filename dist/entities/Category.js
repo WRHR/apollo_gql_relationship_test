@@ -10,13 +10,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Category = void 0;
-const type_graphql_1 = require("type-graphql");
 const typeorm_1 = require("typeorm");
-const Book_1 = require("./Book");
-type_graphql_1.ObjectType();
-typeorm_1.Entity();
-class Category extends typeorm_1.BaseEntity {
-}
+const type_graphql_1 = require("type-graphql");
+const BookCategory_1 = require("./BookCategory");
+let Category = class Category extends typeorm_1.BaseEntity {
+};
 __decorate([
     type_graphql_1.Field(),
     typeorm_1.PrimaryGeneratedColumn(),
@@ -28,9 +26,12 @@ __decorate([
     __metadata("design:type", String)
 ], Category.prototype, "name", void 0);
 __decorate([
-    typeorm_1.ManyToMany(() => Book_1.Book, (book) => book.categories),
-    typeorm_1.JoinTable({ name: "genre" }),
+    typeorm_1.OneToMany(() => BookCategory_1.BookCategory, (bc) => bc.category),
     __metadata("design:type", Array)
-], Category.prototype, "books", void 0);
+], Category.prototype, "bookConnection", void 0);
+Category = __decorate([
+    type_graphql_1.ObjectType(),
+    typeorm_1.Entity()
+], Category);
 exports.Category = Category;
 //# sourceMappingURL=Category.js.map

@@ -2,14 +2,13 @@ import {
   BaseEntity,
   Column,
   Entity,
-  JoinTable,
-  ManyToMany,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from "typeorm";
 import { Field, ObjectType } from "type-graphql";
 import { Author } from "./Author";
-import { Category } from "./Category";
+import { BookCategory } from "./BookCategory";
 
 @ObjectType()
 @Entity()
@@ -34,7 +33,6 @@ export class Book extends BaseEntity {
     return Author.findOne({ id: this.authorId });
   }
 
-  @ManyToMany(() => Category, category => category.books)
-  @JoinTable({ name: "genre" })
-  categories: Category[];
+  @OneToMany(() => BookCategory, (bc) => bc.book)
+  categoryConnection: BookCategory[];
 }

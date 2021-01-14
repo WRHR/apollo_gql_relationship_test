@@ -4,7 +4,7 @@ import {Category} from '../entities/Category'
 @Resolver()
 export class CategoryResolver {
   @Query(()=>[Category])
-  async categories(): Promise<Category[]>{
+  async categories(){
     return await Category.find()
   }
 }
