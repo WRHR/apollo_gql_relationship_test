@@ -11,7 +11,7 @@ import { AuthorResolver } from "./resolvers/author";
 import { Book } from "./entities/Book";
 import { BookResolver } from "./resolvers/book";
 import { Category } from "./entities/Category";
-// import { CategoryResolver } from "./resolvers/category";
+import { CategoryResolver } from "./resolvers/category";
 import { BookCategory } from "./entities/BookCategory";
 
 const main = async () => {
@@ -31,7 +31,7 @@ const main = async () => {
         HelloResolver,
         AuthorResolver,
         BookResolver,
-        // CategoryResolver,
+        CategoryResolver,
       ],
       validate: false,
     }),

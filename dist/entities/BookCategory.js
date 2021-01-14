@@ -30,7 +30,9 @@ __decorate([
     __metadata("design:type", Book_1.Book)
 ], BookCategory.prototype, "book", void 0);
 __decorate([
-    typeorm_1.ManyToOne(() => Category_1.Category, (category) => category.bookConnection, { primary: true }),
+    typeorm_1.ManyToOne(() => Category_1.Category, (category) => category.bookConnection, {
+        primary: true,
+    }),
     typeorm_1.JoinColumn({ name: "categoryId" }),
     __metadata("design:type", Category_1.Category)
 ], BookCategory.prototype, "category", void 0);

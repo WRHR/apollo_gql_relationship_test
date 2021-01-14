@@ -16,13 +16,9 @@ export class BookCategory {
   @JoinColumn({ name: "bookId" })
   book: Book;
 
-  @ManyToOne(() => Category, (category) => category.bookConnection, { primary: true })
+  @ManyToOne(() => Category, (category) => category.bookConnection, {
+    primary: true,
+  })
   @JoinColumn({ name: "categoryId" })
   category: Category;
-
-  // @ManyToOne(() => Category, (category) => category.bookConnection, {
-  //   primary: true,
-  // })
-  // @JoinColumn({ name: "categoryId" })
-  // category: Category;
 }
