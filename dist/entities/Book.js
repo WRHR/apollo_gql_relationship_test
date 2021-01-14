@@ -45,7 +45,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], Book.prototype, "authorInfo", null);
 __decorate([
-    typeorm_1.OneToMany(() => BookCategory_1.BookCategory, (bc) => bc.book),
+    typeorm_1.OneToMany(() => BookCategory_1.BookCategory, (bc) => bc.book, { cascade: true }),
     __metadata("design:type", Array)
 ], Book.prototype, "categoryConnection", void 0);
 Book = __decorate([

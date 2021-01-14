@@ -26,7 +26,7 @@ __decorate([
     __metadata("design:type", String)
 ], Category.prototype, "name", void 0);
 __decorate([
-    typeorm_1.OneToMany(() => BookCategory_1.BookCategory, (bc) => bc.category),
+    typeorm_1.OneToMany(() => BookCategory_1.BookCategory, (bc) => bc.category, { cascade: true }),
     __metadata("design:type", Array)
 ], Category.prototype, "bookConnection", void 0);
 Category = __decorate([

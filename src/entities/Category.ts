@@ -19,6 +19,6 @@ export class Category extends BaseEntity {
   @Column()
   name: string;
 
-  @OneToMany(() => BookCategory, (bc) => bc.category)
+  @OneToMany(() => BookCategory, (bc) => bc.category, {cascade:true})
   bookConnection: BookCategory[];
 }

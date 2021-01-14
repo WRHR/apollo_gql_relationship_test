@@ -33,6 +33,6 @@ export class Book extends BaseEntity {
     return Author.findOne({ id: this.authorId });
   }
 
-  @OneToMany(() => BookCategory, (bc) => bc.book)
+  @OneToMany(() => BookCategory, (bc) => bc.book, {cascade:true})
   categoryConnection: BookCategory[];
 }
