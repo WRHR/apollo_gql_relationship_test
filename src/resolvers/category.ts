@@ -24,14 +24,22 @@ export class CategoryResolver {
     @Arg("id") id: number,
     @Arg("name") name: string
   ): Promise<Category | undefined> {
-    let category = await Category.findOne({id})
-    if(!category) return undefined
-    if(category.name !== 'undefined'){
-      Category.update({id}, {name})
-      category = await Category.findOne({id})
+    let category = await Category.findOne({ id });
+    if (!category) return undefined;
+    if (category.name !== "undefined") {
+      Category.update({ id }, { name });
+      category = await Category.findOne({ id });
     }
-    return category
+    return category;
   }
 
-  
+  @Mutation(() => Boolean)
+  async deleteCategory(@Arg("id") id: number) {
+    let cat = await Category.findOne({ id });
+    if (cat) {
+      Category.delete({ id });
+      return true;
+    }
+    return false;
+  }
 }

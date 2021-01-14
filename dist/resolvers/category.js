@@ -47,11 +47,21 @@ let CategoryResolver = class CategoryResolver {
             let category = yield Category_1.Category.findOne({ id });
             if (!category)
                 return undefined;
-            if (category.name !== 'undefined') {
+            if (category.name !== "undefined") {
                 Category_1.Category.update({ id }, { name });
                 category = yield Category_1.Category.findOne({ id });
             }
             return category;
+        });
+    }
+    deleteCategory(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let cat = yield Category_1.Category.findOne({ id });
+            if (cat) {
+                Category_1.Category.delete({ id });
+                return true;
+            }
+            return false;
         });
     }
 };
@@ -76,6 +86,13 @@ __decorate([
     __metadata("design:paramtypes", [Number, String]),
     __metadata("design:returntype", Promise)
 ], CategoryResolver.prototype, "updateCategory", null);
+__decorate([
+    type_graphql_1.Mutation(() => Boolean),
+    __param(0, type_graphql_1.Arg("id")),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], CategoryResolver.prototype, "deleteCategory", null);
 CategoryResolver = __decorate([
     type_graphql_1.Resolver()
 ], CategoryResolver);
