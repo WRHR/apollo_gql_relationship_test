@@ -30,7 +30,6 @@ export class BookResolver {
       title: input.title,
       author: findAuthor,
     }).save();
-    (await book).hasId()
     return book;
   }
 }
