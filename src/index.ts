@@ -4,7 +4,7 @@ import { ApolloServer } from "apollo-server-express";
 import { buildSchema } from "type-graphql";
 import { createConnection } from "typeorm";
 import { MyContext } from "./types";
-import { HelloResolver } from "./resolvers/hello";
+
 import { User } from "./entities/User";
 import { Author } from "./entities/Author";
 import { AuthorResolver } from "./resolvers/author";
@@ -27,12 +27,7 @@ const main = async () => {
 
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [
-        HelloResolver,
-        AuthorResolver,
-        BookResolver,
-        CategoryResolver,
-      ],
+      resolvers: [AuthorResolver, BookResolver, CategoryResolver],
       validate: false,
     }),
     context: ({ req, res }): MyContext => ({ req, res }),
